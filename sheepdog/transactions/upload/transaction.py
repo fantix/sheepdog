@@ -274,8 +274,12 @@ class UploadTransaction(TransactionBase):
             None
         """
         try:
+            print("add_entity avant")
+            print(doc)
             entity = UploadEntityFactory.create(self, doc, self._config)
             entity.parse(doc)
+            print("add_entity apres")
+            print(entity.doc)
             self.entities.append(entity)
         except Exception as e:  # pylint: disable=broad-except
             self.logger.exception(e)

@@ -106,6 +106,8 @@ class UploadEntity(EntityBase):
                 .format(doc.__class__.__name__),
                 type=EntityErrors.INVALID_VALUE,
             )
+        print("*** entity parse")
+        print(doc)
 
         self.doc = doc
         self._parse_type()
@@ -507,6 +509,9 @@ class UploadEntity(EntityBase):
             else:
                 try:
                     self.node._props[key] = val
+                    print("_set_node_properties")
+                    print(key, val)
+                    print(type(val))
                 except Exception as e:  # pylint: disable=broad-except
                     self.record_error(
                         'Invalid property ({}): {}'.format(key, str(e)),

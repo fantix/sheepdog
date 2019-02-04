@@ -170,7 +170,11 @@ def _add_wrapper_to_bulk_transaction(transaction, wrapper, index):
         except Exception as e:
             raise UserError('Unable to parse doc {}: {}'.format(name, e))
     elif doc_format == 'tsv':
+        print("*** TSVToJSONConverter avant")
+        print(doc)
         data, errors = utils.transforms.TSVToJSONConverter().convert(doc)
+        print("*** TSVToJSONConverter apres")
+        print(data)
     elif doc_format == 'csv':
         data, errors = utils.transforms.CSVToJSONConverter().convert(doc)
     else:

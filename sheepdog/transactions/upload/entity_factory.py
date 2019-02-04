@@ -17,7 +17,7 @@ class UploadEntityFactory():
     @staticmethod
     def create(transaction, doc, config=None):
         """
-        Will attempt to parse the  type from the doc and check the dictionary
+        Will attempt to parse the type from the doc and check the dictionary
         for that node type's category.
 
         Will then return an instance of UploadEntity or one of its
@@ -30,9 +30,15 @@ class UploadEntityFactory():
             #       more helpful debugging
             return UploadEntity(transaction, config)
 
+        print("*** UploadEntityFactory avant")
+        print(doc)
+
         # Remove asterisks from doc keys
         for key in doc:
             doc[key.lstrip('*')] = doc.pop(key)
+
+        print("*** UploadEntityFactory apres")
+        print(doc)
 
         node_type = doc.get('type')
         node_category = get_node_category(node_type)
