@@ -30,6 +30,10 @@ class UploadEntityFactory():
             #       more helpful debugging
             return UploadEntity(transaction, config)
 
+        # Remove asterisks from doc keys
+        for key in doc:
+            doc[key.lstrip('*')] = doc.pop(key)
+
         node_type = doc.get('type')
         node_category = get_node_category(node_type)
 

@@ -106,9 +106,6 @@ class UploadEntity(EntityBase):
                 .format(doc.__class__.__name__),
                 type=EntityErrors.INVALID_VALUE,
             )
-        # Remove asterisks from doc keys
-        for key in doc:
-            doc[key.lstrip('*')] = doc.pop(key)
 
         self.doc = doc
         self._parse_type()
